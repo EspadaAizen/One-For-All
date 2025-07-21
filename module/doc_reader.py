@@ -3,10 +3,6 @@ import cv2
 import pyttsx3
 from PIL import Image
 
-
-# Optional: Set Tesseract path if not in system PATH
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
 def preprocess_image(img_path):
     img = cv2.imread(img_path)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
