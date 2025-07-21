@@ -12,27 +12,18 @@ def preprocess_image(img_path):
     cv2.imwrite(processed_path, thresh)
     return processed_path
 
-
 def speak_text(text):
     try:
         engine = pyttsx3.init()
         engine.say(text)
         engine.runAndWait()
     except Exception as e:
-        print("Error with text-to-speech:", e)
-
+        print("Text-to-speech error:", e)
 
 def read_text_from_image(image_path):
     try:
         image = Image.open(image_path).convert("RGB")
-        text = pytesseract.image_to_string(image)
-
-        print("\n--- Extracted Text ---\n")
-        print(text.strip())
-        print("\n----------------------")
-
-        speak_text(text)  # 🔈 Speak the extracted text aloud
-
+        text = pytesseract.image_to_string(image).strip()
+        return text
     except Exception as e:
-        print("Error reading image:", e)
-
+        return f"Error reading image: {e}"
