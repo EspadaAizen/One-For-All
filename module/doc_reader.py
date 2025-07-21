@@ -25,14 +25,14 @@ def speak_text(text):
 def read_text_from_image(image_path):
     try:
         image = Image.open(image_path).convert("RGB")
-        image.save("temp.png")
-        text = pytesseract.image_to_string("temp.png")
+        text = pytesseract.image_to_string(image)
 
         print("\n--- Extracted Text ---\n")
         print(text.strip())
         print("\n----------------------")
 
-        speak_text(text)  # 🔈 Speak the text aloud
+        speak_text(text)  # 🔈 Speak the extracted text aloud
 
     except Exception as e:
         print("Error reading image:", e)
+
